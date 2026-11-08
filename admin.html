@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin Panel - Alvskywok 2.0</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#080d18;color:#edf2ff;font-family:Arial,sans-serif;padding:20px}
+.container{max-width:650px;margin:35px auto}
+.card{background:#111b2d;border:1px solid #263650;border-radius:15px;padding:22px;margin-bottom:18px}
+h1{color:#66aaff;font-size:25px}
+input,button{width:100%;padding:13px;margin:8px 0;border-radius:9px;border:1px solid #354763;font-size:15px}
+input{background:#080f1d;color:white}
+button{background:#2879ed;color:white;border:0;font-weight:bold}
+button:active{opacity:.7}
+.muted{color:#9eacc4;font-size:13px}
+#dashboard{display:none}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;color:#a9d6ff}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="card">
+    <h1>ALVSKYWOK 2.0</h1>
+    <p class="muted">ADMIN CONTROL PANEL</p>
+  </div>
+
+  <section class="card" id="login">
+    <h3>Admin Login</h3>
+    <input id="username" placeholder="Username admin" autocomplete="username">
+    <input id="password" type="password" placeholder="Password admin" autocomplete="current-password">
+    <button onclick="loginAdmin()">MASUK</button>
+    <p id="loginMessage" class="muted"></p>
+  </section>
+
+  <section id="dashboard">
+    <div class="card">
+      <h3>Dashboard</h3>
+      <p id="status" class="muted">Memuat data...</p>
+      <button onclick="loadData()">REFRESH DATA</button>
+      <button onclick="backup()">BACKUP DATA</button>
+      <button onclick="logoutAdmin()">LOGOUT</button>
+    </div>
+    <div class="card">
+      <h3>Data Website</h3>
+      <pre id="data">Belum ada data.</pre>
+    </div>
+  </section>
+</div>
+
+<script>
+async function request(url,options={}){
+  const response=await fetch(url,{
+    credentials:"include",
+    ...options,
+    headers:{
+      "Content-Type":"application/json",
+      ...(options.headers||{})
+    }
+  });
+  const result=await response.json().catch(()=>({}));
+  if(!response.ok)throw new Error(result.message||result.error||"Permintaan gagal ("+response.status+")");
+  return result;
+}
+
+async function loginAdmin(){
+  const message=document.getElementById("loginMessage");
+  message.textContent="Memeriksa login...";
+  try{
+    await request("/api/admin/login",{
+      method:"POST",
+      body:JSON.stringify({
+        username:document.getElementById("username").value.trim(),
+        password:document.getElementById("password").value
+      })
+    });
+    document.getElementById("login").style.display="none";
+    document.getElementById("dashboard").style.display="block";
+    loadData();
+  }catch(error){
+    message.textContent=error.message;
+  }
+}
+
+async function loadData(){
+  const status=document.getElementById("status");
+  status.textContent="Mengambil data...";
+  try{
+    const result=await request("/api/admin/data");
+    document.getElementById("data").textContent=JSON.stringify(result,null,2);
+    status.textContent="Data berhasil dimuat.";
+  }catch(error){
+    status.textContent=error.message;
+  }
+}
+
+async function backup(){
+  try{
+    const result=await request("/api/admin/backup",{method:"POST"});
+    alert(result.message||"Permintaan backup berhasil.");
+  }catch(error){
+    alert(error.message);
+  }
+}
+
+async function logoutAdmin(){
+  try{
+    await request("/api/logout",{method:"POST"});
+  }catch(error){}
+  document.getElementById("dashboard").style.display="none";
+  document.getElementById("login").style.display="block";
+  document.getElementById("password").value="";
+}
+</script>
+</body>
+</html>
+  
