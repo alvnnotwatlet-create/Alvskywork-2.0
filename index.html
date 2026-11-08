@@ -1,0 +1,123 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#080910"><title>Alvskywok 2.0</title><style>
+:root{--bg:#080910;--panel:#111421;--line:#2b3047;--red:#ff3158;--text:#f4f6ff;--muted:#a7adc4}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui}header{position:sticky;top:0;background:#080910ed;border-bottom:1px solid var(--line);padding:14px;z-index:3}nav,main,footer{max-width:1100px;margin:auto}nav{display:flex;justify-content:space-between;gap:12px;align-items:center}.brand{font-weight:900;font-size:20px}.brand span{color:var(--red)}.btn{background:#191d2d;border:1px solid var(--line);color:var(--text);padding:10px 14px;border-radius:12px;font:inherit;cursor:pointer}.primary{background:linear-gradient(135deg,#e51c47,#9c1640);border-color:#ff5578}.card{background:linear-gradient(150deg,#151827,#0e111b);border:1px solid var(--line);border-radius:20px;padding:20px;margin:16px 0}.muted{color:var(--muted)}.field,textarea{width:100%;background:#090c15;color:white;border:1px solid var(--line);border-radius:12px;padding:12px;font:inherit;margin:5px 0}.row{display:flex;gap:8px;flex-wrap:wrap}.row>*{flex:1;min-width:120px}.hidden{display:none!important}.chat{height:320px;overflow:auto;background:#090c15;border:1px solid var(--line);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:10px}.bubble{padding:10px 13px;border-radius:14px;background:#20243a;max-width:90%;white-space:pre-wrap;overflow-wrap:anywhere}.me{align-self:flex-end;background:#71233b}.item{padding:12px;border:1px solid var(--line);border-radius:12px;margin:8px 0;overflow-wrap:anywhere}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.code{white-space:pre-wrap;overflow-wrap:anywhere;background:#05070d;padding:10px;border-radius:8px;display:none}.code.show{display:block}footer{text-align:center;color:#747b96;padding:25px}@media(max-width:600px){.card{padding:15px}nav{align-items:flex-start}}
+
+.eyebrow{font-size:11px;letter-spacing:.18em;color:#ff7894;font-weight:800}.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.section-head h2{margin:5px 0}.counter{border:1px solid #623047;background:#351827;color:#ffb3c4;padding:7px 11px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.08em}.catalog-tools{display:grid;grid-template-columns:2fr 1fr 1fr;gap:9px;margin:15px 0}.catalog-tools .field{margin:0}.catalog-stats{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 14px}.stat-chip{border:1px solid var(--line);background:#0b0e18;padding:6px 10px;border-radius:9px;color:var(--muted);font-size:12px}.script-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:12px}.script-card{background:linear-gradient(145deg,#191d2e,#0c0f19);border:1px solid #30364e;border-radius:15px;padding:14px;min-width:0}.script-card h3{margin:0 0 5px;font-size:16px}.script-meta{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:8px 0}.game-tag{font-size:10px;letter-spacing:.04em;padding:4px 7px;border-radius:6px;background:#252b42;color:#c9d2ff}.script-index{font-size:11px;color:#8991ad}.script-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.script-actions .btn{font-size:12px;padding:7px 10px}.script-code{display:none;margin-top:10px;padding:11px;border:1px solid #353c55;background:#070a12;border-radius:10px;white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.6 ui-monospace,monospace;color:#c9d7ff;max-height:220px;overflow:auto}.script-code.open{display:block}.favorite{min-width:38px}.small-note{font-size:12px;line-height:1.55;margin-top:16px}.empty-state{grid-column:1/-1;text-align:center;padding:30px;color:var(--muted);border:1px dashed var(--line);border-radius:14px}
+@media(max-width:680px){.catalog-tools{grid-template-columns:1fr}.script-grid{grid-template-columns:1fr}.section-head{align-items:flex-start}}
+</style></head><body><header><nav><div class="brand">Alvskky<span>wok 2.0</span></div><div><span class="muted" style="font-size:12px">User Portal</span></div></nav></header><main>
+<section class="card"><h1>Portal Pengguna</h1><p class="muted">Komunitas, pustaka script, bantuan AI, pengumuman dan laporan bug.</p><div id="notice" class="item hidden"></div><div id="auth"><h2>Masuk / Daftar</h2>
+<div class="item" id="newUserGuide" style="border-color:#64405a;background:#1a1420;margin:12px 0">
+  <h3 style="margin:0 0 6px">👋 Panduan Pengguna Baru</h3>
+  <p class="muted" style="margin:0 0 8px">Baru pertama kali di Alvskywok 2.0? Ikuti langkah mudah berikut.</p>
+  <ol style="padding-left:22px;margin:8px 0">
+    <li><b>Daftar akun:</b> isi username 3–24 karakter (huruf, angka, garis bawah) dan password minimal 10 karakter, lalu tekan <b>Daftar</b>.</li>
+    <li><b>Login:</b> setelah akun dibuat, masukkan username dan password yang sama lalu tekan <b>Login</b>.</li>
+    <li><b>Jelajahi website:</b> buka Roblox Script Library untuk mencari script berdasarkan nama game, gunakan AI Helper untuk bertanya, dan baca pengumuman admin.</li>
+    <li><b>Butuh bantuan?</b> kirim komentar atau laporkan bug melalui formulir di bagian bawah halaman.</li>
+  </ol>
+  <p class="muted" style="margin:0;font-size:13px">Tips keamanan: gunakan password unik, jangan bagikan password atau data pribadi, dan jangan menjalankan kode Roblox dari sumber yang belum kamu percaya.</p>
+</div>
+<div class="item hidden" id="connectionHelp" style="border-color:#9b5365;background:#24131b">
+  <b>⚠️ Website belum terhubung ke server</b>
+  <p style="margin:6px 0">Kamu sedang membuka file HTML secara langsung atau server backend belum aktif. Login dan Daftar hanya berfungsi setelah website dipublikasikan melalui alamat HTTPS dari hosting. Membuka file dari penyimpanan HP (content:// atau file://) tidak dapat menghubungkan API login.</p>
+  <p style="margin:0">Admin perlu menjalankan backend Node.js dan membuka website dari URL hosting, bukan dari file HTML lokal.</p>
+</div>
+<div class="row"><input id="username" class="field" placeholder="Username (3–24 karakter)" autocomplete="username"><input id="password" class="field" type="password" placeholder="Password (minimal 10 karakter)" autocomplete="current-password"></div><div class="row"><button class="btn primary" id="login">Login</button><button class="btn" id="register">Daftar</button></div><p id="authMsg" class="muted"></p></div><div id="profile" class="hidden">Login sebagai <b id="who"></b> <button class="btn" id="logout">Keluar</button></div></section>
+<div id="app" class="hidden">
+<section class="card"><h2>📣 Pengumuman admin</h2><div id="announcement">Memuat…</div><div id="notifications"></div></section>
+<section class="card"><h2>🤖 AI Chat Helper</h2><p class="muted">Asisten AI untuk menjelaskan fitur, membantu navigasi, menulis, merangkum, dan memberi ide. AI online aktif setelah admin mengatur API key di server.</p><div class="chat" id="chat"><div class="bubble">Halo! Saya asisten Alvskywok 2.0. Apa yang ingin kamu kerjakan?</div></div><div class="row"><input id="prompt" class="field" maxlength="4000" placeholder="Tanyakan sesuatu…"><button class="btn primary" id="ask">Kirim</button></div><div class="row"><button class="btn quick" data-q="Jelaskan fitur website ini">Bantuan website</button><button class="btn quick" data-q="Bantu saya menulis teks yang bagus">Menulis</button><button class="btn quick" data-q="Buatkan ide proyek website">Ide proyek</button></div></section>
+<section class="card" id="roblox-library">
+<div class="section-head"><div><span class="eyebrow">ROBLOX SCRIPT CENTER</span><h2>🎮 Roblox Script Library</h2><p class="muted">30 entri • pencarian cepat • filter game • salin kode</p></div><span class="counter" id="scriptCount">30 SCRIPTS</span></div>
+<div class="catalog-tools"><input id="scriptSearch" class="field" placeholder="Cari nama script atau game…" aria-label="Cari script"><select id="gameFilter" class="field" aria-label="Filter game"><option value="all">Semua game</option><option value="BREAK STEAL AND EGG">BREAK STEAL AND EGG</option><option value="STEAL AND EGG">STEAL AND EGG</option><option value="THROW FOOD FOR ANIMALS">THROW FOOD FOR ANIMALS</option></select><select id="sortScripts" class="field" aria-label="Urutkan"><option value="default">Urutan awal</option><option value="az">Nama A–Z</option></select></div>
+<div class="catalog-stats" id="catalogStats"></div><div id="robloxScripts" class="script-grid"></div>
+<p class="muted small-note">Peringatan keamanan: kode berasal dari tautan pihak ketiga dan belum diaudit. Situs ini hanya menampilkan dan menyalin teks; tidak menjalankan loader, tidak mengunduh kode eksternal, dan tidak menjamin script aman atau masih berfungsi.</p>
+</section>
+<section class="card"><h2>💬 Komentar komunitas</h2><textarea id="comment" rows="2" placeholder="Tulis komentar…"></textarea><button class="btn primary" id="sendComment">Kirim komentar</button><div id="comments"></div></section>
+<section class="card"><h2>🐞 Laporkan bug / feedback</h2><p class="muted">Jelaskan halaman, langkah yang dilakukan, dan pesan error jika ada.</p><textarea id="report" rows="4" placeholder="Jelaskan bug atau saran…"></textarea><button class="btn primary" id="sendReport">Kirim laporan ke admin</button><p id="reportMsg" class="muted"></p></section>
+</div></main><footer>Alvskywok 2.0 • User Portal</footer>
+<script>
+const $=id=>document.getElementById(id);let history=[];let serverScripts=null;
+async function api(url,opts={}){let r;try{r=await fetch(url,{...opts,credentials:"same-origin",headers:{"Content-Type":"application/json",...(opts.headers||{})}})}catch(e){throw Error("Gagal terhubung ke server. Buka website melalui URL hosting HTTPS yang aktif, bukan file HTML lokal. Jika website sudah online, minta admin memeriksa backend/API.")}let d={};try{d=await r.json()}catch{}if(!r.ok)throw Error(d.error||"Permintaan gagal");return d}
+function bubble(t,me=false){let d=document.createElement("div");d.className="bubble"+(me?" me":"");d.textContent=t;$("chat").append(d);$("chat").scrollTop=$("chat").scrollHeight}
+async function refresh(){try{const d=await api("/api/status");$("announcement").textContent=d.settings.announcement||"Belum ada pengumuman.";if(d.settings.maintenance){$("notice").textContent="Website sedang maintenance. Beberapa fitur sementara tidak tersedia.";$("notice").classList.remove("hidden")}else $("notice").classList.add("hidden");$("notifications").replaceChildren(...d.notifications.slice(-5).reverse().map(n=>{let x=document.createElement("div");x.className="item";x.textContent=n.text;return x}));if(Array.isArray(d.scripts)){serverScripts=d.scripts;renderRobloxScripts()}}catch(e){$("announcement").textContent=e.message}}
+async function comments(){try{let a=await api("/api/comments");$("comments").replaceChildren(...a.map(x=>{let d=document.createElement("div");d.className="item";d.textContent="@"+x.username+": "+x.text;return d}))}catch{}}
+async function login(register=false){try{let d=await api(register?"/api/register":"/api/login",{method:"POST",body:JSON.stringify({username:$("username").value,password:$("password").value})});$("auth").classList.add("hidden");$("profile").classList.remove("hidden");$("app").classList.remove("hidden");$("who").textContent=d.user.username;$("authMsg").textContent="";refresh();comments()}catch(e){$("authMsg").textContent=e.message}}
+$("login").onclick=()=>login(false);$("register").onclick=()=>login(true);
+$("logout").onclick=async()=>{await api("/api/logout",{method:"POST"});location.reload()};
+async function ask(){let q=$("prompt").value.trim();if(!q)return;$("prompt").value="";bubble(q,true);history.push({role:"user",content:q});$("ask").disabled=true;try{let d=await api("/api/chat",{method:"POST",body:JSON.stringify({messages:history})});history.push({role:"assistant",content:d.reply});bubble(d.reply)}catch(e){bubble("Belum dapat menjawab: "+e.message)}finally{$("ask").disabled=false}}
+$("ask").onclick=ask;$("prompt").onkeydown=e=>{if(e.key==="Enter")ask()};document.querySelectorAll(".quick").forEach(b=>b.onclick=()=>{$("prompt").value=b.dataset.q;ask()});
+$("sendComment").onclick=async()=>{try{await api("/api/comments",{method:"POST",body:JSON.stringify({text:$("comment").value})});$("comment").value="";comments()}catch(e){alert(e.message)}};
+$("sendReport").onclick=async()=>{try{let d=await api("/api/reports",{method:"POST",body:JSON.stringify({text:$("report").value})});$("report").value="";$("reportMsg").textContent=d.message}catch(e){$("reportMsg").textContent=e.message}};
+(async()=>{try{await api("/api/status");$("connectionHelp").classList.add("hidden")}catch(e){$("connectionHelp").classList.remove("hidden");$("authMsg").textContent=e.message}try{let d=await api("/api/me");$("auth").classList.add("hidden");$("profile").classList.remove("hidden");$("app").classList.remove("hidden");$("who").textContent=d.user.username;refresh();comments()}catch{refresh()}})();
+setInterval(()=>{if(!$("app").classList.contains("hidden")){refresh();comments()}},15000);
+
+const ROBLOX_SCRIPTS = [
+["Lynx","BREAK STEAL AND EGG",'loadstring(game:HttpGet("https://raw.githubusercontent.com/4LynxX/Lynx/refs/heads/main/LynxxMain.lua"))()'],
+["SENA","BREAK STEAL AND EGG",'loadstring(game:HttpGet("https://senahub.xyz/senaloader"))()'],
+["CORVUS","BREAK STEAL AND EGG",'loadstring(game:HttpGet("https://raw.githubusercontent.com/vaensigma/Corvus/refs/heads/main/Loader"))()'],
+["FLY GUI V3","BREAK STEAL AND EGG",'loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Fly-gui-v3-30439"))()'],
+["YTTA","BREAK STEAL AND EGG",'loadstring(game:HttpGet("https://scriptblox.com/raw/Break-and-Steal-an-Egg-Best-Script-Autofarm-Auto-Break-Auto-Steal-Keyless-and-More-232332"))()'],
+["ARTHEIRS HUB","BREAK STEAL AND EGG",'loadstring(game:HttpGet("https://artheirs.xyz/api/free"))()'],
+["SERENITY HUB","BREAK STEAL AND EGG",'loadstring(game:HttpGet("https://raw.githubusercontent.com/MUshihara/Serenity-hub/main/loader.lua"))()'],
+["SCRIPT ZENOX V9","BREAK STEAL AND EGG",'loadstring(game:HttpGet("https://gist.githubusercontent.com/ScriptHub927/22e6e417cdd56e5c6c57fe194194f5a9/raw/ZENOX_V9_PREMIUM_LITE.lua"))()'],
+["SYSHUB","BREAK STEAL AND EGG",'loadstring(game:HttpGet("https://syshub.fun/free"))()'],
+["SAV HUB","BREAK STEAL AND EGG",'loadstring(game:HttpsGet("https://github.com/azbalalaff/VoidHub/blob/main/LoaderV1.lua"))()'],
+["SCRIPT BY MARIO HUB","STEAL AND EGG",'loadstring(game:HttpGet("https://raw.githubusercontent.com/xDTaraZz/Roblox-Scripts/refs/heads/main/loader.lua"))()'],
+["SENA EXCLUSIVE","STEAL AND EGG",'loadstring(game:HttpGet("https://senahub.xyz/senaexclusive"))()'],
+["CODIUM HUB","STEAL AND EGG",'loadstring(game:HttpGet("https://getcodium.xyz/loader.luau"))()'],
+["CHILLI V8","STEAL AND EGG",'loadstring(game:HttpGet("https://robloxscriptbest.com/script/loader.php?script=chillihub_v6_pro0"))()'],
+["NO LAG HUB","STEAL AND EGG",'loadstring(game:HttpGet("https://scriptblox.com/raw/Steal-An-Egg-No-Lag-Hub-or-Instant-Steal-232110"))()'],
+["BANANA HUB","STEAL AND EGG",'loadstring(game:HttpGet("https://raw.githubusercontent.com/napun67/stealanegg/refs/heads/main/bananahub.lua"))()'],
+["FYY COMMUNITY","STEAL AND EGG",'loadstring(game:HttpGet("https://FyyCommunity.net"))()'],
+["VENYX","STEAL AND EGG",'loadstring(game:HttpGet("https://raw.githubusercontent.com/tienkhanh1/Venyx/main/VenyxHub"))()'],
+["MIRANDA HUB","STEAL AND EGG",'loadstring(game:HttpGet("https://raw.githubusercontent.com/miirandahub/loader/main/afkk"))()'],
+["VXEZE","STEAL AND EGG",'loadstring(game:HttpsGet("https://gist.githubusercontent.com/angeryy-tvy/6a9ce750ddf5860230196ac468868fdb/raw/Steal-An-Egg-Vxeze"))()'],
+["ZEROIN","STEAL AND EGG",'loadstring(game:HttpGet("https://zeroinhub.com/api/script"))()'],
+["DECODE HUB","STEAL AND EGG",'loadstring(game:HttpGet("https://raw.githubusercontent.com/ItzYumi/Decode/refs/heads/main/DE%3ACODE.lua", true))()'],
+["AKKIWI HUB","THROW FOOD FOR ANIMALS",'loadstring(game:HttpGet("https://akkiwi.com/h"))()'],
+["SANGEX COMMUNITY","THROW FOOD FOR ANIMALS",'loadstring(game:HttpsGet("https://scriptblox.com/raw/Throw-Food-For-Animals-INSTANT-THROW-or-AUTO-PERFECT-or-AUTO-FARM-or-AUTO-EVERYTHING-234288"))()'],
+["SENA","THROW FOOD FOR ANIMALS",'loadstring(game:HttpGet("https://senahub.xyz/senaloader"))()'],
+["AZOTH","THROW FOOD FOR ANIMALS",'loadstring (permainan: HttpGet ("https://raw.githubusercontent.com/Azoth666/AZOTH/main/loader.lua"))'],
+["LUMIN HUB","THROW FOOD FOR ANIMALS",'loadstring(game:HttpGet("https://scriptblox.com/raw/Throw-Food-For-Animals-Lumin-Hub-or-Keyless-or-Updated-234626"))()'],
+["VALUEHAT HUB","THROW FOOD FOR ANIMALS",'loadstring(game:HttpGet(\'https://raw.githubusercontent.com/ValueHat-Script/Valuehat-script/refs/heads/main/ThrowFoodForAnimals.lua\'))()'],
+["TORA IS ME","THROW FOOD FOR ANIMALS",'loadstring(game:HttpGet("https://raw.githubusercontent.com/gumanba/Scripts/main/ThrowFoodForAnimals"))()'],
+["SCRIPT BY MYSTRIX HUB","THROW FOOD FOR ANIMALS",'loadstring(game:HttpGet("https://raw.githubusercontent.com/ummarxfarooq/mystrix-hub/refs/heads/main/loader"))()']
+];
+let favorites=new Set();
+try{favorites=new Set(JSON.parse(localStorage.getItem("aw_script_favorites")||"[]"))}catch{}
+function saveFavorites(){try{localStorage.setItem("aw_script_favorites",JSON.stringify([...favorites]))}catch{}}
+function renderRobloxScripts(){
+ const host=document.getElementById("robloxScripts"); if(!host)return;
+ const q=(document.getElementById("scriptSearch")?.value||"").trim().toLowerCase();
+ const game=document.getElementById("gameFilter")?.value||"all";
+ const sort=document.getElementById("sortScripts")?.value||"default";
+ let list=(serverScripts||ROBLOX_SCRIPTS).map((s,i)=>Array.isArray(s)?({name:s[0],game:s[1],code:s[2],i,id:String(i)}):({name:s.name,game:s.game||s.description||"Lainnya",code:s.code||"",i,id:s.id||String(i)}));
+ const filter=document.getElementById("gameFilter"), selected=filter.value;
+ if(serverScripts){const games=[...new Set(list.map(x=>x.game))].sort();filter.replaceChildren(new Option("Semua game","all"),...games.map(g=>new Option(g,g)));if(games.includes(selected))filter.value=selected;}
+ if(game!=="all")list=list.filter(s=>s.game===game);
+ if(q)list=list.filter(s=>(s.name+" "+s.game).toLowerCase().includes(q));
+ if(sort==="az")list.sort((a,b)=>a.name.localeCompare(b.name));
+ document.getElementById("scriptCount").textContent=list.length+" / "+((serverScripts||ROBLOX_SCRIPTS).length)+" SCRIPTS";
+ const counts={};(serverScripts||ROBLOX_SCRIPTS).forEach(s=>{const g=Array.isArray(s)?s[1]:(s.game||s.description||"Lainnya");counts[g]=(counts[g]||0)+1});
+ document.getElementById("catalogStats").replaceChildren(...Object.entries(counts).map(([g,n])=>{const x=document.createElement("span");x.className="stat-chip";x.textContent=g+": "+n;return x}));
+ host.replaceChildren();
+ if(!list.length){const empty=document.createElement("div");empty.className="empty-state";empty.textContent="Tidak ada script yang cocok dengan pencarian.";host.append(empty);return;}
+ list.forEach(s=>{
+  const card=document.createElement("article");card.className="script-card";
+  const idx=document.createElement("div");idx.className="script-index";idx.textContent="SCRIPT #"+String(s.i+1).padStart(2,"0");
+  const title=document.createElement("h3");title.textContent=s.name;
+  const meta=document.createElement("div");meta.className="script-meta";
+  const tag=document.createElement("span");tag.className="game-tag";tag.textContent=s.game;meta.append(tag);
+  const actions=document.createElement("div");actions.className="script-actions";
+  const view=document.createElement("button");view.className="btn";view.textContent="Lihat kode";
+  const copy=document.createElement("button");copy.className="btn primary";copy.textContent="Salin kode";
+  const fav=document.createElement("button");fav.className="btn favorite";fav.textContent=favorites.has(s.id)?"★":"☆";fav.title="Favorit";
+  const code=document.createElement("pre");code.className="script-code";code.textContent=s.code;
+  view.onclick=()=>{code.classList.toggle("open");view.textContent=code.classList.contains("open")?"Tutup kode":"Lihat kode"};
+  copy.onclick=async()=>{try{await navigator.clipboard.writeText(s.code);copy.textContent="Tersalin ✓";setTimeout(()=>copy.textContent="Salin kode",1600)}catch{code.classList.add("open");view.textContent="Tutup kode";copy.textContent="Pilih & salin teks"}};
+  fav.onclick=()=>{if(favorites.has(s.id))favorites.delete(s.id);else favorites.add(s.id);saveFavorites();fav.textContent=favorites.has(s.id)?"★":"☆"};
+  actions.append(view,copy,fav);card.append(idx,title,meta,actions,code);host.append(card);
+ });
+}
+["scriptSearch","gameFilter","sortScripts"].forEach(id=>document.getElementById(id)?.addEventListener(id==="scriptSearch"?"input":"change",renderRobloxScripts));
+renderRobloxScripts();
+</script></body></html>
